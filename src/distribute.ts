@@ -14,6 +14,9 @@ const mint = getOrCreateKeypair(KEYS_FOLDER, "mint");
 const buyer1 = readBuyerWallet("buyer1");
 const buyer2 = readBuyerWallet("buyer2");
 const buyer3 = readBuyerWallet("buyer3");
+// const buyer1 = readBuyerWallet("buyer1");
+// const buyer2 = readBuyerWallet("buyer2");
+// const buyer3 = readBuyerWallet("buyer3");
 const buyersString: string[] = [buyer1!, buyer2!, buyer3!]
 const buyers: Keypair[] = buyersString.map((PK, i) => Keypair.fromSecretKey(bs58.decode(PK)))
 
@@ -58,6 +61,16 @@ const wallet_distribute = async () => {
                     pubkey: (Keypair.fromSecretKey(bs58.decode(wallet)).publicKey).toBase58()
                 })
             })
+            // wallets.push({
+            //     subWallets: subWalletPk,
+            //     numTokens: numTokenArray
+            // })
+            // subWalletPk.map((wallet) => {
+            //     walletData.push({
+            //         privateKey: wallet,
+            //         pubkey: (Keypair.fromSecretKey(bs58.decode(wallet)).publicKey).toBase58()
+            //     })
+            // })
             console.log("It is saving holder wallets.")
             saveHolderWalletsToFile(
                 walletData
